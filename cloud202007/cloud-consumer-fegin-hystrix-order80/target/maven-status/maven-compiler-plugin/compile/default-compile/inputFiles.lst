@@ -1,0 +1,4 @@
+D:\bcc项目\cloud202007\cloud-consumer-fegin-hystrix-order80\src\main\java\com\atguigu\springcloud\service\PaymentFallbackService.java
+D:\bcc项目\cloud202007\cloud-consumer-fegin-hystrix-order80\src\main\java\com\atguigu\springcloud\OrderHystrixMain80.java
+D:\bcc项目\cloud202007\cloud-consumer-fegin-hystrix-order80\src\main\java\com\atguigu\springcloud\service\PaymentHystrixService.java
+D:\bcc项目\cloud202007\cloud-consumer-fegin-hystrix-order80\src\main\java\com\atguigu\springcloud\controller\OrderHystrixController.java

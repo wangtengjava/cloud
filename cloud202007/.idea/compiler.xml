@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="cloud-consumer-order80" />
+        <module name="cloud-consumzk-order80" />
+        <module name="cloud-provider-hystrix-payment8001" />
+        <module name="cloud-consumconsul-order80" />
+        <module name="cloud-eureka-server7002" />
+        <module name="cloud-eureka-server7001" />
+        <module name="cloud-provide-payment8002" />
+        <module name="cloud-provide-payment8001" />
+        <module name="cloud-provider-payment8004" />
+        <module name="cloud-consumconsu-order80" />
+        <module name="cloud-api-commons" />
+        <module name="cloud-geteway-geteway9527" />
+        <module name="cloud-consumer-fegin-hystrix-order80" />
+        <module name="cloud-providerconsul-payment8006" />
+        <module name="cloud-consumer-fegin-order80" />
+        <module name="cloud-consumer-hystrix-dashboard9001" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel target="1.8">
+      <module name="cloud-consumconsu-order80" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

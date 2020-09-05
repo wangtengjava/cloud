@@ -1,0 +1,65 @@
+server:
+  port: 9527
+spring:
+  application:
+    name: cloud-gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true # 开启从注册中心动态创建路由的功能，利用微服务名称j进行路由
+      routes:
+        - id: payment_route # 路由的id,没有规定规则但要求唯一,建议配合服务名
+#          uri: http://localhost:8001
+          #lb 就是负载均衡.就是访问9527就会去访问Eureka上面的CLOUD-PAYMENT-SERVICE服务中的
+          #/payment/get/**方法,如果有就返回true,如果上面有多个服务都有,lb就会进行负载均衡.
+          uri: lb://CLOUD-PAYMENT-SERVICE
+          predicates:
+            - Path=/payment/get/** # 断言，路径相匹配的进行路由
+
+            #- After=2017-01-20T17:42:47.789-07:00[America/Denver]
+            #- Before=2017-01-20T17:42:47.789-07:00[America/Denver]
+            #- Cookie=username,zzyy
+            #- Header=X-Request-Id, \d+ #请求头要有X-Request-Id属性，并且值为正数
+            #- Host=**.atguigu.com
+            #- Method=GET
+            #- Query=username, \d+ # 要有参数名username并且值还要是正整数才能路由
+          # 过滤
+          #filters:
+          #  - AddRequestHeader=X-Request-red, blue
+        - id: payment_route2
+#          uri: http://localhost:8002
+          uri: lb://CLOUD-PAYMENT-SERVICE
+          filters:
+            #过滤器工厂会在匹配的请求头上加上一对请求头,名称为
+            #X-Request-red值为blue
+            - AddRequestHeader=X-Request-red, blue
+          predicates:
+            - Path=/payment/lb/** #断言,路径相匹配的进行路由
+            #要有参数名username并且值还要是整数
+#            - Query=username, \d+
+            #在几点之前可以访问
+#            - After=2020-09-04T10:39:33.144+08:00[Asia/Shanghai]
+            #在几点之后可以访问
+#            - Before=2020-09-04T09:00:33.144+08:00[Asia/Shanghai]
+            #在几点和几点之间可以访问
+            - Between=2020-09-04T09:00:33.144+08:00[Asia/Shanghai],2020-09-05T09:00:33.144+08:00[Asia/Shanghai]
+            #请求当中必须携带cookie并且cookie中username的值是wt
+#            - Cookie=username,wt
+            #请求头要有X-Request-Id属性，并且值为正数
+#            - Header=X-Request-Id, \d+
+#            - Host=**.atguigu.com
+             #必须是get请求
+#             - Method=GET
+
+
+
+
+eureka:
+  instance:
+    hostname: cloud-gateway-service
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka/
